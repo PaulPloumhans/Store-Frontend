@@ -1,4 +1,4 @@
-img {
+.img {
   width: 100px;
   border-radius: 10px;
 }
@@ -28,7 +28,7 @@ img {
 
 .cart-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   margin-top: 64px;
 }

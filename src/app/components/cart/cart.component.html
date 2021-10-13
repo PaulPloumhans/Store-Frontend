@@ -1,1 +1,17 @@
-<p>cart works!</p>
+<div class="cart-panel">
+    <div class="cart-container">
+        <ul *ngFor="let item of cartItems">
+            <div class="cart-item">
+                <img class="img" [src]="item.url">
+                <div class="cart-item-details">
+                    <h3>{{item.name}}</h3>
+                    <br>
+                    <p>Unit price: {{item.price}}$</p>
+                    <br>
+                    <p>Quantity: {{item.quantity}}</p>
+                </div>
+            </div>
+        </ul>
+    </div>
+</div>
+
