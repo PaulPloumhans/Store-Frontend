@@ -11,6 +11,7 @@ import { Product } from '../../models/Product';
 })
 export class CartComponent implements OnInit {
   cartItems: CartItem[] = [];
+  cartValue = 0;
 
   constructor(
     private cartService: CartService,
@@ -30,11 +31,18 @@ export class CartComponent implements OnInit {
       newItem.url = product.url;
       newItem.quantity = quantity;
       this.cartItems.push(newItem);
+      this.cartValue += product.price * quantity;
     });
     //alert(`initialized cart, length is ${this.cartItems.length}`);
   }
 
   cartSize(): number {
     return this.cartItems.length;
+  }
+
+  removeItem() {
+    // find product
+    alert('Removing item');
+    //this.cartService.setInCart();
   }
 }

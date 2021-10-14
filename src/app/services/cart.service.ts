@@ -21,7 +21,7 @@ export class CartService {
     //alert(`Adding ${quantity} items with ID ${id} to the cart`);
     return this.cart;
   }
-  // Set "quantity" items with ID "id" in the cart
+  // Set "quantity" Product in the cart
   setInCart(product: Product, quantity: number): Map<Product, number> {
     // if setting quantity to 0, delete the entry
     if (quantity === 0) {

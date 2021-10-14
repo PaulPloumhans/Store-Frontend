@@ -1,5 +1,5 @@
 <div class="cart-panel">
-    <div class="cart-container">
+    <div *ngIf="cartValue !== 0" class="cart-container">
         <ul *ngFor="let item of cartItems">
             <div class="cart-item">
                 <img class="img" [src]="item.url">
@@ -9,9 +9,15 @@
                     <p>Unit price: {{item.price}}$</p>
                     <br>
                     <p>Quantity: {{item.quantity}}</p>
+                    <br>
+                    <button (click)="removeItem()">Remove</button>
                 </div>
             </div>
         </ul>
+        <h3>Total value : {{cartValue}}$</h3> 
+    </div>
+    <div *ngIf="cartValue === 0" class="empty-cart-message">
+        <h3>Empty cart</h3>
     </div>
 </div>
 
