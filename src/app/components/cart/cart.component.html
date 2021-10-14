@@ -1,16 +1,16 @@
 <div class="cart-panel">
     <div *ngIf="cartValue !== 0" class="cart-container">
-        <ul *ngFor="let item of cartItems | keyvalue">
+        <ul *ngFor="let item of cartItems">
             <div class="cart-item">
-                <img class="img" [src]="item.key.url">
+                <img class="img" [src]="item.product.url">
                 <div class="cart-item-details">
-                    <h3>{{item.key.name}}</h3>
+                    <h3>{{item.product.name}}</h3>
                     <br>
-                    <p>Unit price: {{item.key.price}}$</p>
+                    <p>Unit price: {{item.product.price}}$</p>
                     <br>
-                    <p>Quantity: {{item.value}}</p>
+                    <p>Quantity: {{item.quantity}}</p>
                     <br>
-                    <button (click)="removeItem()">Remove</button>
+                    <button (click)="removeItem(item.product)">Remove</button>
                 </div>
             </div>
         </ul>

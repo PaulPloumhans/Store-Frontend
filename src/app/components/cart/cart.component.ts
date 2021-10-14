@@ -10,7 +10,7 @@ import { Product } from '../../models/Product';
 })
 export class CartComponent implements OnInit {
   // key = Product, value = quantity
-  cartItems: Map<Product, number> = new Map<Product, number>();
+  cartItems: { product: Product; quantity: number }[] = [];
   cartValue = 0;
 
   constructor(
@@ -20,21 +20,21 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     // recover all products in the cart
-    this.cartItems = this.cartService.getCart();
+    this.cartItems = this.cartService.getCartItems();
     // compute cart value
-    this.cartValue = 0;
-    this.cartItems.forEach((quantity, product) => {
-      this.cartValue += product.price * quantity;
-    });
+    this.cartValue = this.cartService.getCartValue();
   }
 
   cartSize(): number {
-    return this.cartItems.size;
+    return this.cartItems.length;
   }
 
-  removeItem() {
-    // find product
+  removeItem(product: Product): void {
     alert('Removing item');
-    //this.cartService.setInCart();
+    this.cartService.setInCart(product, 0);
+    // rebuild product list
+    this.cartItems = this.cartService.getCartItems();
+    // compute cart value
+    this.cartValue = this.cartService.getCartValue();
   }
 }

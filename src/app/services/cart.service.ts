@@ -1,39 +1,62 @@
 import { Injectable } from '@angular/core';
+import { createPrinter } from 'typescript';
 import { Product } from '../models/Product';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  cart: Map<Product, number>;
+  cart: Map<number, { product: Product; quantity: number }>; // key = product id, value = { product, quantity }
   constructor() {
-    this.cart = new Map<Product, number>();
+    this.cart = new Map<number, { product: Product; quantity: number }>();
   }
   // and "quantity" items with ID "id" to the cart
-  addToCart(product: Product, quantity: number): Map<Product, number> {
+  addToCart(
+    product: Product,
+    quantity: number
+  ): Map<number, { product: Product; quantity: number }> {
     // adding to an existing entry
-    if (this.cart.has(product)) {
-      this.cart.set(product, (this.cart.get(product) as number) + quantity);
+    const id = product.id;
+    if (this.cart.has(id)) {
+      let entry = this.cart.get(id) as { product: Product; quantity: number };
+      entry.quantity += 1;
+      this.cart.set(id, entry);
     } else {
       // new entry
-      this.cart.set(product, quantity);
+      this.cart.set(id, { product: product, quantity: quantity });
     }
-    //alert(`Adding ${quantity} items with ID ${id} to the cart`);
     return this.cart;
   }
   // Set "quantity" Product in the cart
-  setInCart(product: Product, quantity: number): Map<Product, number> {
+  setInCart(
+    product: Product,
+    quantity: number
+  ): Map<number, { product: Product; quantity: number }> {
+    const id = product.id;
     // if setting quantity to 0, delete the entry
     if (quantity === 0) {
-      this.cart.delete(product);
+      this.cart.delete(id);
     } else {
       // otherwise set entry to the desired quantity
-      this.cart.set(product, quantity);
+      this.cart.set(id, { product: product, quantity: quantity });
     }
     return this.cart;
   }
-  // Returns the cart
-  getCart(): Map<Product, number> {
-    return this.cart;
+  // Build and return the cart product list
+  getCartItems(): { product: Product; quantity: number }[] {
+    let cartItems: { product: Product; quantity: number }[] = [];
+    for (const entry of this.cart.values()) {
+      cartItems.push(entry);
+    }
+    return cartItems;
+  }
+
+  // Returns cart value
+  getCartValue(): number {
+    let cartValue = 0;
+    for (const entry of this.cart.values()) {
+      cartValue += entry.product.price * entry.quantity;
+    }
+    return cartValue;
   }
 }
