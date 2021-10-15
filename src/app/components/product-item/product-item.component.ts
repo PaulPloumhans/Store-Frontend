@@ -8,6 +8,8 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./product-item.component.css'],
 })
 export class ProductItemComponent implements OnInit {
+  toAdd: number = 1;
+  test: string = '';
   @Input() product: Product;
 
   constructor(private cartService: CartService) {
@@ -16,7 +18,8 @@ export class ProductItemComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  addToCart(quantity: number) {
-    this.cartService.addToCart(this.product, quantity);
+  addToCart(): void {
+    alert(`adding ${this.toAdd} items of product ${this.product.id}`);
+    this.cartService.addToCart(this.product, this.toAdd);
   }
 }
