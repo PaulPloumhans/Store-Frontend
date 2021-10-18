@@ -22,4 +22,8 @@ export class ProductItemComponent implements OnInit {
     alert(`adding ${this.toAdd} items of product ${this.product.id}`);
     this.cartService.addToCart(this.product, this.toAdd);
   }
+
+  goToDetails(): void {
+    //alert(`Going to details for product with ID ${this.product.id}`);
+  }
 }
