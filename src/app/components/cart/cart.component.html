@@ -14,7 +14,43 @@
                 </div>
             </div>
         </ul>
-        <h3>Total value : {{cartValue}}$</h3> 
+        <h3>Total value : {{cartValue}}$</h3>
+    </div>
+    <div *ngIf="cartValue !== 0" class="cart-container">
+        <form #form="ngForm" (ngSubmit)="confirmOrder()">
+            <h5>Name</h5>
+            <input class="form-margin" type="text" name="customerName" required minlength="4" placeholder="Min 4 characters" [(ngModel)]="customerName" #customerNameHTML="ngModel">
+            <br>
+            <h5>Address</h5>
+            <input class="form-margin" type="text" name="customerAddress" required minlength="8" placeholder="Min 8 characters" [(ngModel)]="customerAddress" #customerAddressHTML="ngModel">
+            <br>
+            <h5>Credit card</h5>
+            <input class="form-margin" type="text" name="customerCreditCard" required minlength="16" maxlength="16" placeholder="Exactly 16 characters" [(ngModel)]="customerCreditCard" #customerCreditCardHTML="ngModel">
+            <br>
+            <br>
+            <input type="submit" value="Confirm Order" [disabled]="form.invalid" class="btn btn-primary">                
+        </form>
+        <div *ngIf="customerNameHTML.invalid" class="invalid-msg">
+            <div *ngIf="customerNameHTML.dirty">
+                <div *ngIf="customerNameHTML.errors?.minlength">
+                Customer name must be at least 4 characters
+                </div>                    
+            </div>                
+        </div>
+        <div *ngIf="customerAddressHTML.invalid" class="invalid-msg">
+            <div *ngIf="customerAddressHTML.dirty">
+                <div *ngIf="customerAddressHTML.errors?.minlength">
+                Customer address must be at least 8 characters
+                </div>                    
+            </div>                
+        </div>
+        <div *ngIf="customerCreditCardHTML.invalid" class="invalid-msg">
+            <div *ngIf="customerCreditCardHTML.dirty">
+                <div *ngIf="customerCreditCardHTML.errors?.minlength || customerCreditCardHTML.errors?.maxlength">
+                Customer credit card must be exactly 16 characters
+                </div>                    
+            </div>                
+        </div>
     </div>
     <div *ngIf="cartValue === 0" class="empty-cart-message">
         <h3>Empty cart</h3>

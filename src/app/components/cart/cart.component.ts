@@ -12,6 +12,10 @@ export class CartComponent implements OnInit {
   // key = Product, value = quantity
   cartItems: { product: Product; quantity: number }[] = [];
   cartValue = 0;
+  // items for checkout
+  customerName: string = '';
+  customerAddress: string = '';
+  customerCreditCard: string = '';
 
   constructor(
     private cartService: CartService,
@@ -34,7 +38,11 @@ export class CartComponent implements OnInit {
     this.cartService.setInCart(product, 0);
     // rebuild product list
     this.cartItems = this.cartService.getCartItems();
-    // compute cart value
-    this.cartValue = this.cartService.getCartValue();
+    // compute cart value - make sure there are only 2 digits after the decimal point
+    this.cartValue = Math.round(this.cartService.getCartValue() * 100) / 100;
+  }
+
+  confirmOrder(): void {
+    alert('Order confirmed');
   }
 }

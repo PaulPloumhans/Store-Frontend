@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { waitForAsync } from '@angular/core/testing';
 import { Product } from 'src/app/models/Product';
 import { ProductService } from 'src/app/services/product.service';
 
