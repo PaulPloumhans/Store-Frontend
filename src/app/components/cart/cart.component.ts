@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
-import { ProductService } from 'src/app/services/product.service';
+import { OrderService } from 'src/app/services/order.service';
 import { Product } from '../../models/Product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -19,14 +20,15 @@ export class CartComponent implements OnInit {
 
   constructor(
     private cartService: CartService,
-    private productService: ProductService
+    private orderService: OrderService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     // recover all products in the cart
     this.cartItems = this.cartService.getCartItems();
     // compute cart value
-    this.cartValue = this.cartService.getCartValue();
+    this.cartValue = Math.round(this.cartService.getCartValue() * 100) / 100;
   }
 
   cartSize(): number {
@@ -42,7 +44,24 @@ export class CartComponent implements OnInit {
     this.cartValue = Math.round(this.cartService.getCartValue() * 100) / 100;
   }
 
+  emptyCart(): void {
+    this.cartItems = [];
+    this.cartValue = 0;
+    this.customerName = '';
+    this.customerAddress = '';
+    this.customerCreditCard = '';
+  }
+
   confirmOrder(): void {
-    alert('Order confirmed');
+    // communicate order content to orderService
+    this.orderService.registerOrder(
+      this.cartItems,
+      this.cartValue,
+      this.customerName,
+      this.customerAddress
+    );
+    this.cartService.emptyCart();
+    this.emptyCart();
+    this.router.navigate(['/confirmation']);
   }
 }

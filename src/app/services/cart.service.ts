@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { createPrinter } from 'typescript';
 import { Product } from '../models/Product';
 
 @Injectable({
@@ -58,5 +57,10 @@ export class CartService {
       cartValue += entry.product.price * entry.quantity;
     }
     return cartValue;
+  }
+
+  // empty cart
+  emptyCart(): void {
+    this.cart.clear();
   }
 }

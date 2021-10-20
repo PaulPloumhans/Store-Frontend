@@ -28,6 +28,7 @@
             <input class="form-margin" type="text" name="customerCreditCard" required minlength="16" maxlength="16" placeholder="Exactly 16 characters" [(ngModel)]="customerCreditCard" #customerCreditCardHTML="ngModel">
             <br>
             <br>
+            <!-- <input type="submit" value="Confirm Order" [disabled]="form.invalid" class="btn btn-primary" routerLink="/confirmation">                 -->
             <input type="submit" value="Confirm Order" [disabled]="form.invalid" class="btn btn-primary">                
         </form>
         <div *ngIf="customerNameHTML.invalid" class="invalid-msg">

@@ -3,7 +3,7 @@
     <img class="product-image" [src]="product.url" routerLink="/product/{{product.id}}">
     <p>{{product.price}}$</p>
     <form #form="ngForm" (ngSubmit)="addToCart()">
-        <input type="number" name="toAdd" min="1" max="99" value="1" [(ngModel)]="toAdd">
+        <input type="number" class="select-input" name="toAdd" min="1" max="99" value="1" [(ngModel)]="toAdd">
         <input type="submit" value="Add to cart">
     </form>
 </div> 

@@ -1,1 +1,17 @@
-<p>confirmation works!</p>
+<div class=confirmation-container>
+    <div class=confirmation-items>
+        <div class="confirmation-item">
+            <h1>Order confirmed</h1>
+        </div>
+        <div class="confirmation-item">
+            Thank you <b>{{customerName}}</b>!
+        </div>
+        <div class="confirmation-item">
+            Your <b>{{orderValue}}$</b> order is confirmed
+        </div>
+        <div class="confirmation-item">
+            It will be shipped to <b>{{customerAddress}}</b>.
+        </div>
+        <button class="btn btn-primary" routerLink="/">Back to product list</button>
+    </div>
+</div>
