@@ -1,27 +1,40 @@
-# MyStoreFrontend
+#  Udacity Full Stack javascript developer - Store front end
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.7.
+This is the third project of the Udacity Full Stack Javascript Developer Nanodegree program: MyStore.
 
-## Development server
+It is a simple e-commerce store front end, developed with Angular CLI version 12.2.9. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The starting point for this project is the repository available at: https://github.com/udacity/nd-0067-c3-angular-fundamentals-project-starter
+-cli) version 12.2.9.
 
-## Code scaffolding
+# Deployment
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+In order to run this app you first need to install all required typescript packages using
+```
+npm install
+```
+Then serve the Angular application to make it accessible to your browser using
+```
+ng serve
+```
+and then navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Build
+Alternatively, you can ask Angular to serve the app on a port that is not 4200 (i.e., Angular default) by running
+```
+ng serve --port 3000
+```
+Which will Note that `--port 3000` Finally, grant `storefront_user` access to these databases
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+# Folder structure
 
-## Running unit tests
+The main folders are:
+* `src/app` contains all the source files (in Typescript)
+  * `src/app/components` contains the different components (cart, confirmation, nav-bar, product-item, product-item-detail, product-list)
+  * `src/app/models` contains the models (there is only model: Product)
+  * `src/app/services` contains the services
+    * product, which serves to load the products from a file using HttpClient
+    * cart, which serves to exchange cart content information among components
+    * order, which serves to exchange order information
+* `src/assets` contains JSON a file with all the products available in the store
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
