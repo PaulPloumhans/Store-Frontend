@@ -2,10 +2,27 @@
 
 This is the third project of the Udacity Full Stack Javascript Developer Nanodegree program: MyStore.
 
-It is a simple e-commerce store front end, developed with Angular CLI version 12.2.9. 
+## Project description
 
-The starting point for this project is the repository available at: https://github.com/udacity/nd-0067-c3-angular-fundamentals-project-starter
--cli).
+This project is a simple e-commerce store front end application, developed with Angular CLI version 12.2.9. The starting point for this project is the repository available at: https://github.com/udacity/nd-0067-c3-angular-fundamentals-project-starter-cli).
+
+The project demonstrate the uses of the following Angular capabilities:
+* Use of Angular Components
+* Use of @Input decorator to pass data from parent to child component
+* Use of @Output decorator and EventEmitter class to pass data from child to parent component
+* Use of Angular Services (to pass data between sibling components
+* Use of HttpClient Module to load external data
+* Use of AppRouting Module to facilitate navigation between pages and avoid reloading
+* Use of Angular directives in HTML (*ngFor, *ngIf,...)
+* Use of CSS to style the application
+* Typescript is used throughout
+
+## Key features of the application
+
+The application starts with users being presented a list of all products available in the store. The list shows, for each product, its name, price, and a picture. Users have the possibility to add multiple items of any product to a cart, and to obtain more detailed information on a product by clicking on its image.
+
+At any moment, users have the possiblity to access the cart (through a navigation bar on the top of the page). From the cart view, users can see all the products they have added to the cart, as well as the total value in the cart. They can also remove some items and confirm their order. To confirm their order, users have to enter their name, address and credit card number. These fields are tested for minimum length and/or content, and only in case they are not invalid are the users allowed to proceed with their order. At that point, an order confirmation page is displayed, and the cart is emptied. 
+
 
 # Deployment
 
