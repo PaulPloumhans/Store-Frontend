@@ -25,11 +25,12 @@
             <input class="form-margin" type="text" name="customerAddress" required minlength="8" placeholder="Min 8 characters" [(ngModel)]="customerAddress" #customerAddressHTML="ngModel">
             <br>
             <h5>Credit card</h5>
-            <input class="form-margin" type="text" name="customerCreditCard" required minlength="16" maxlength="16" placeholder="Exactly 16 characters" [(ngModel)]="customerCreditCard" #customerCreditCardHTML="ngModel">
+            <input class="form-margin" type="text" name="customerCreditCard" required minlength="16" required maxlength="16" placeholder="Exactly 16 digits"
+                [ngModel]="customerCreditCard" (ngModelChange)="checkCreditCardNumber($event)" #customerCreditCardHTML="ngModel">
             <br>
             <br>
-            <!-- <input type="submit" value="Confirm Order" [disabled]="form.invalid" class="btn btn-primary" routerLink="/confirmation">                 -->
-            <input type="submit" value="Confirm Order" [disabled]="form.invalid" class="btn btn-primary">                
+            <input type="submit" value="Confirm Order" 
+                [disabled]="form.invalid || (isValidCreditCardNumber===false)" class="btn btn-primary">                
         </form>
         <div *ngIf="customerNameHTML.invalid" class="invalid-msg">
             <div *ngIf="customerNameHTML.dirty">
@@ -45,12 +46,8 @@
                 </div>                    
             </div>                
         </div>
-        <div *ngIf="customerCreditCardHTML.invalid" class="invalid-msg">
-            <div *ngIf="customerCreditCardHTML.dirty">
-                <div *ngIf="customerCreditCardHTML.errors?.minlength || customerCreditCardHTML.errors?.maxlength">
-                Customer credit card must be exactly 16 characters
-                </div>                    
-            </div>                
+        <div *ngIf="customerCreditCardHTML.dirty && isValidCreditCardNumber===false" class="invalid-msg">            
+            {{invalidCreditCardMessage}}
         </div>
     </div>
     <div *ngIf="cartValue === 0" class="empty-cart-message">

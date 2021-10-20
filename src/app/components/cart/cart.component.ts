@@ -17,6 +17,8 @@ export class CartComponent implements OnInit {
   customerName: string = '';
   customerAddress: string = '';
   customerCreditCard: string = '';
+  isValidCreditCardNumber: boolean = true;
+  invalidCreditCardMessage: string = '';
 
   constructor(
     private cartService: CartService,
@@ -63,5 +65,15 @@ export class CartComponent implements OnInit {
     this.cartService.emptyCart();
     this.emptyCart();
     this.router.navigate(['/confirmation']);
+  }
+
+  checkCreditCardNumber(event: string): void {
+    this.isValidCreditCardNumber = /^\d{16}$/.test(event);
+    if (this.isValidCreditCardNumber) {
+      this.invalidCreditCardMessage = '';
+    } else {
+      this.invalidCreditCardMessage =
+        'Credit card number must be exactly 16 digits';
+    }
   }
 }
