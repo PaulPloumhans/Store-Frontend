@@ -5,7 +5,7 @@ This is the third project of the Udacity Full Stack Javascript Developer Nanodeg
 It is a simple e-commerce store front end, developed with Angular CLI version 12.2.9. 
 
 The starting point for this project is the repository available at: https://github.com/udacity/nd-0067-c3-angular-fundamentals-project-starter
--cli) version 12.2.9.
+-cli).
 
 # Deployment
 
