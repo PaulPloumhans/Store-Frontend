@@ -10,7 +10,7 @@ The project demonstrate the uses of the following Angular capabilities:
 * Use of Angular Components
 * Use of @Input decorator to pass data from parent to child component
 * Use of @Output decorator and EventEmitter class to pass data from child to parent component
-* Use of Angular Services (to pass data between sibling components
+* Use of Angular Services (to pass data between sibling components)
 * Use of HttpClient Module to load external data
 * Use of AppRouting Module to facilitate navigation between pages and avoid reloading
 * Use of Angular directives in HTML (*ngFor, *ngIf,...)
