@@ -11,11 +11,12 @@ The project demonstrate the uses of the following Angular capabilities:
 * Use of @Input decorator to pass data from parent to child component
 * Use of @Output decorator and EventEmitter class to pass data from child to parent component
 * Use of Angular Services (to pass data between sibling components)
+* Use of one-way and two-ways bindings to connect data between (typescript) components and (HTML) templates
 * Use of HttpClient Module to load external data
 * Use of AppRouting Module to facilitate navigation between pages and avoid reloading
 * Use of directives in HTML (*ngFor, *ngIf,...)
 
-Additionally, CSS isused to style the application and Typescript is used throughout.
+Additionally, CSS is used to style the application and Typescript is used throughout.
 
 ## Key features of the application
 
