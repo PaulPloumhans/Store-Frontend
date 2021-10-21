@@ -13,9 +13,8 @@ The project demonstrate the uses of the following Angular capabilities:
 * Use of Angular Services (to pass data between sibling components)
 * Use of HttpClient Module to load external data
 * Use of AppRouting Module to facilitate navigation between pages and avoid reloading
-* Use of Angular directives in HTML (*ngFor, *ngIf,...)
-* Use of CSS to style the application
-* Typescript is used throughout
+* Use of directives in HTML (*ngFor, *ngIf,...)
+Additionally, CSS isused to style the application and Typescript is used throughout.
 
 ## Key features of the application
 
